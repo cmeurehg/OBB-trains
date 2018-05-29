@@ -40,8 +40,9 @@ var config = {
           "train": trainName,
           "destination": destination,
           "departure": firstDeparture,
-          "frequency": frequency
-      }
+          "frequency": frequency,
+          
+        }
 
       // Pushing values to Firebase
       database.ref().push(train);
@@ -51,30 +52,7 @@ var config = {
     console.log(firstDeparture);
     console.log(frequency);
 
-    // Code for setting the time of the next departure
-
-    var firstDepartureConverted = moment(firstDeparture, "HH:mm").subtract(1, "years");
-    console.log(firstDepartureConverted);
-
-    // Current Time
-    var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
- 
-    // Difference between the times
-    var diffTime = moment().diff(moment(firstDepartureConverted), "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
-
-     // Time apart (remainder)
-     var tRemainder = diffTime % frequency;
-     console.log(tRemainder);
-
-     // Minutes Until Next Train
-    var tMinutesTillTrain = frequency - tRemainder;
-    console.log("minutes till next train: " + tMinutesTillTrain);
-
-    // Next Train
-    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("Next Departure: " + moment(nextTrain).format("hh:mm"));
+   
 
     
     })
@@ -96,11 +74,38 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     var destination = childSnapshot.val().destination;
     var firstDeparture = childSnapshot.val().departure;
     var frequency = childSnapshot.val().frequency;
+
+
+     // Code for setting the time of the next departure
+
+     var firstDepartureConverted = moment(firstDeparture, "HH:mm").subtract(1, "years");
+     console.log(firstDepartureConverted);
+ 
+     // Current Time
+     var currentTime = moment();
+     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
   
+     // Difference between the times
+     var diffTime = moment().diff(moment(firstDepartureConverted), "minutes");
+     console.log("DIFFERENCE IN TIME: " + diffTime);
+ 
+      // Time apart (remainder)
+      var tRemainder = diffTime % frequency;
+      console.log(tRemainder);
+ 
+      // Minutes Until Next Train
+     var tMinutesTillTrain = frequency - tRemainder;
+     console.log("minutes till next train: " + tMinutesTillTrain);
+ 
+     // Next Train
+     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+     console.log("Next Departure: " + moment(nextTrain).format("hh:mm"));
+  
+    var nextTrainCoverted = moment(nextTrain).format("hh:mm")
 
     // Add the information of the trains to the table
   $("#train-info > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" +
-  firstDeparture + "</td><td>" + frequency + "</td></tr>");
+  firstDeparture + "</td><td>" + frequency + "</td><td>" + nextTrainCoverted + "</td></tr>");
 
 });
 
