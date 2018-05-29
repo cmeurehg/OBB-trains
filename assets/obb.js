@@ -1,5 +1,9 @@
 
-// https://obb-train-schedule.firebaseio.com
+// https://obb-train-schedule.firebaseio.com (Firebase project link)
+
+//Just dynamically adding a photo to the background
+$(".jumbotron").css("background-image","url(images/vienna.jpg)");
+
 
 // Initializing Firebase
 var config = {
@@ -47,6 +51,16 @@ var config = {
     console.log(firstDeparture);
     console.log(frequency);
 
+    // Code for setting the time of the next departure
+
+    var firstDepartureConverted = moment(firstDeparture, "HH:mm").subtract(1, "years");
+    console.log(firstDepartureConverted);
+
+    // Current Time
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+
     
     });
 
@@ -74,3 +88,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   firstDeparture + "</td><td>" + frequency + "</td></tr>");
 
 });
+
+
+   
