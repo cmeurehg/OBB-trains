@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"></link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Train Routes and Timetables</title>
+ </head>
+
+
+
+<body>
+
+  <div class="container">
+
+<!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1 class="text-center">ÖBB Routes and Timetables</h1>
+    </div>
+
+    <div class="row">
+
+    <!-- Train Administrator information input-->
+      <div class="col-lg-4">
+        <div class="card card-default">
+          <div class="card-heading">
+            <h4 class="card-title">Routes</h4>
+          </div>
+          <div class="card-body">
+
+     <!-- Form to input train information -->
+
+            <form role="form">
+              <div class="form-group row">
+                <label for="train-name">Train Name:</label>
+                <input class="form-control" id="train-name" type="text">
+              </div>
+              <div class="form-group row">
+                <label for="destination">Destination</label>
+                <input class="form-control" id="destination" type="text">
+              </div>
+              <div class="form-group row">
+                <label for="first-departure">First Departure</label>
+                <input class="form-control" id="first-departure" type="text">
+              </div>
+              <div class="form-group row">
+                <label for="frequency">Departure Frequency</label>
+                <input class="form-control" id="frequency" type="text">
+              </div>
+              <button class="btn btn-primary" id="add-train" type="submit">Submit</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Next Departure -->
+      <div class="col-lg-8">
+        <div class="card card-default">
+          <div class="card-heading">
+            <h5 class="card-title">Display Train Schedule</h5>
+          </div>
+          <div class="card-body" id="train-info-title">
+            <div class="card-body">
+                <table class="table table-hover" id="train-info">
+                  <thead>
+                    <tr>
+                      <th>Train Direction</th>
+                      <th>Destination</th>
+                      <th>Departure</th>
+                      <th>Frequency (min)</th>
+                      <th>Next Departure</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+  </div>
+
+<!-- Firebase Script -->
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+<!-- Adding the link to the moment.js-->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+<!--Linking to my js file from my repository-->
+<script src="assets/obb.js"></script>
+
+</body>
+
+</html>
+
