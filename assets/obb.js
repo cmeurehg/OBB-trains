@@ -59,10 +59,25 @@ var config = {
     // Current Time
     var currentTime = moment();
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+ 
+    // Difference between the times
+    var diffTime = moment().diff(moment(firstDepartureConverted), "minutes");
+    console.log("DIFFERENCE IN TIME: " + diffTime);
 
+     // Time apart (remainder)
+     var tRemainder = diffTime % frequency;
+     console.log(tRemainder);
+
+     // Minutes Until Next Train
+    var tMinutesTillTrain = frequency - tRemainder;
+    console.log("minutes till next train: " + tMinutesTillTrain);
+
+    // Next Train
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log("Next Departure: " + moment(nextTrain).format("hh:mm"));
 
     
-    });
+    })
 
     // Clear input from form
     $("#train-name").val("");
