@@ -7,7 +7,7 @@ $(".jumbotron").css("background-image","url(images/vienna.jpg)");
 
 // Initializing Firebase
 var config = {
-    apiKey: "AIzaSyCJqEV-tlLHJQgMBwM7oqZyAZJInxKlWs8",
+    apiKey: //"AIzaSyCJqEV-tlLHJQgMBwM7oqZyAZJInxKlWs8",
     authDomain: "obb-train-schedule.firebaseapp.com",
     databaseURL: "https://obb-train-schedule.firebaseio.com",
     projectId: "obb-train-schedule",
