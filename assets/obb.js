@@ -2,7 +2,7 @@
 // https://obb-train-schedule.firebaseio.com (Firebase project link)
 
 //Just dynamically adding a photo to the background
-$(".jumbotron").css("background-image","url(images/vienna.jpg)");
+$(".jumbotron").css("background-image","url(Images/vienna.jpg)");
 
 
 // Initializing Firebase
